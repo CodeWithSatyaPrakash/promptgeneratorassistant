@@ -17,3 +17,12 @@ export interface SavedPrompt extends PromptFormData {
   name: string;
   createdAt: number;
 }
+
+export interface PromptTemplate {
+  id: string;
+  category: string;
+  name: string;
+  description: string;
+  icon: string;
+  template: PromptFormData;
+}

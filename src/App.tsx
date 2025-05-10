@@ -7,6 +7,7 @@ import Header from './components/Header';
 import PromptForm from './components/PromptForm';
 import PromptOutput from './components/PromptOutput';
 import SavedPrompts from './components/SavedPrompts';
+import PromptTemplates from './components/PromptTemplates';
 
 function App() {
   const [formData, setFormData] = useState<PromptFormData>({
@@ -46,6 +47,11 @@ function App() {
     setGeneratedPrompt(generatePrompt(prompt));
   };
 
+  const handleSelectTemplate = (template: PromptFormData) => {
+    setFormData(template);
+    setGeneratedPrompt(generatePrompt(template));
+  };
+
   return (
     <ThemeProvider>
       <div className="min-h-screen bg-gray-100 dark:bg-gray-900 transition-colors duration-200">
@@ -57,6 +63,7 @@ function App() {
               onDeletePrompt={deletePrompt} 
               onLoadPrompt={handleLoadPrompt}
             />
+            <PromptTemplates onSelectTemplate={handleSelectTemplate} />
             <PromptForm 
               onFormChange={handleFormChange} 
               initialData={formData}
